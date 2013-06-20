@@ -1,2 +1,36 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+
+%section#systems-section{ ng_controller: "SystemsCtrl" }
+  %form.form-horizontal
+    %input{ type: "text", placeholder: "Novo Sistema", ng_model: "newSystem.name", required: "" }
+    %input{ type: "submit", class: "btn", value: "Add" }
+
+  %ul.systems-list
+    %li.system
+      %span.system-title= "3D&T"
+      %ul.books-list
+        %li.book= "Manual 3D&T Alpha"
+    %li.system
+      %span.system-title= "D&D"
+      %ul.books-list
+        %li.book= "Livro do Jogador"
+    %li.system
+      %span.system-title= "Storytelling"
+      %ul.books-list
+        %li.book= "Mago O Despertar"
+
+%section#rules-section
+  %form.form-horizontal
+    .control-group
+      %input{ type: "text", placeholder: "Nova Regra" }
+    .control-group
+      %input{ type: "text", placeholder: "Descrição" }
+    %input{ type: "submit", class: "btn", value: "Salvar" }
+
+  %form.form-search
+    %input{ type: "text", class: "input-medium search-query" }
+    %input{ type: "submit", class: "btn" }
+
+  %ul.rules-list
+    %li
+      %span.rule-title= "Dados Utilizados"
+      %p.rule-text= "Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker."
