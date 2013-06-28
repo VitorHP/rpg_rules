@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
     chef.add_recipe "build-essential"
     chef.add_recipe "postgresql"
     chef.add_recipe "ruby_build"
-    chef.add_recipe "rbenv::system"
+    chef.add_recipe "rbenv::user"
     chef.add_recipe "rbenv::vagrant"
     #chef.add_recipe "postgresql::server"
     #chef.add_role "web"
