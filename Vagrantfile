@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "precise"
+  config.vm.box = "ubuntu64"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
@@ -20,6 +20,7 @@ Vagrant.configure("2") do |config|
 
     chef.add_recipe "apt"
     chef.add_recipe "build-essential"
+    chef.add_recipe "encoding"
     chef.add_recipe "postgresql"
     chef.add_recipe "ruby_build"
     chef.add_recipe "rbenv::user"

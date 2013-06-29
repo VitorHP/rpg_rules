@@ -1,5 +1,5 @@
 
-%section#systems-section{ ng_controller: "SystemsCtrl" }
+%section#systems-section
   %form.form-horizontal
     %input{ type: "text", placeholder: "Novo Sistema", ng_model: "newSystem.name", required: "" }
     %input{ type: "submit", class: "btn", value: "Add" }
@@ -18,19 +18,21 @@
       %ul.books-list
         %li.book= "Mago O Despertar"
 
-%section#rules-section
-  %form.form-horizontal
-    .control-group
-      %input{ type: "text", placeholder: "Nova Regra" }
-    .control-group
-      %input{ type: "text", placeholder: "Descrição" }
-    %input{ type: "submit", class: "btn", value: "Salvar" }
+.controller{ ng_controller: "RulesCtrl" }
+  %section#rules-section
+    %form.form-horizontal{ ng_submit: "addRule()" }
+      .control-group
+        %input{ type: "text", placeholder: "Nova Regra", ng_model: "newRule.name" }
+      .control-group
+        %input{ type: "text", placeholder: "Descrição", ng_model: "newRule.description" }
+      %input{ type: "submit", class: "btn", value: "Salvar" }
 
-  %form.form-search
-    %input{ type: "text", class: "input-medium search-query" }
-    %input{ type: "submit", class: "btn" }
+    %form.form-search
+      %input{ type: "text", class: "input-medium search-query" }
+      %input{ type: "submit", class: "btn" }
 
-  %ul.rules-list
-    %li
-      %span.rule-title= "Dados Utilizados"
-      %p.rule-text= "Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker."
+    %ul.rules-list
+      %li{ ng_repeat: "rule in rules" }
+        %span.rule-name {{rule.name}}
+        %p.rule-text {{rule.description}}
+
