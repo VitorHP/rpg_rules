@@ -34,5 +34,7 @@
     %ul.rules-list
       %li{ ng_repeat: "rule in rules" }
         %span.rule-name {{rule.name}}
-        %p.rule-text {{rule.description}}
+        %markdown.rule-text= "#tchubas"
+
+    {{rule.description}}
 
