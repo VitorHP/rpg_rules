@@ -1,0 +1,7 @@
+.controller{ ng_controller: "RulesCtrl" }
+  %input{ type: "text", class: "input-medium search-query", ng_model: "query" }
+
+  %ul.rules-list
+    %li{ ng_repeat: "rule in rules | filter:query" }
+      %span.rule-name {{rule.name}}
+      %p= "tchubas rubas"

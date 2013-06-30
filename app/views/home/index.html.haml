@@ -18,21 +18,8 @@
       %ul.books-list
         %li.book= "Mago O Despertar"
 
-.controller{ ng_controller: "RulesCtrl" }
-  %section#rules-section
-    %form.form-horizontal{ ng_submit: "addRule()" }
-      .control-group
-        %input{ type: "text", placeholder: "Nova Regra", ng_model: "newRule.name" }
-      .control-group
-        %input{ type: "text", placeholder: "Descrição", ng_model: "newRule.description" }
-      %input{ type: "submit", class: "btn", value: "Salvar" }
-
-
-    %input{ type: "text", class: "input-medium search-query", ng_model: "query" }
-
-    %ul.rules-list
-      %li{ ng_repeat: "rule in rules | filter:query " }
-        %span.rule-name {{rule.name}}
-        %p= "tchubas rubas"
-
-
+%section#rules-section
+  = link_to "Regras", "#/rules"
+  |
+  = link_to "Nova Regra", "#/rules/new"
+  .view{ ng_view: "" }

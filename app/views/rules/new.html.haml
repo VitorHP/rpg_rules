@@ -1,0 +1,6 @@
+%form.form-horizontal{ ng_submit: "addRule()" }
+  .control-group
+    %input{ type: "text", placeholder: "Nova Regra", ng_model: "newRule.name" }
+  .control-group
+    %input{ type: "text", placeholder: "Descrição", ng_model: "newRule.description" }
+  %input{ type: "submit", class: "btn", value: "Salvar" }

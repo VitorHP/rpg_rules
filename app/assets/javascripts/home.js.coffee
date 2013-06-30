@@ -14,6 +14,16 @@ App.directive 'markdown', ->
       element.html(htmlText)
   }
 
+App.config ( $routeProvider) ->
+  $routeProvider
+    .when "/rules",
+      templateUrl: "rules.html"
+    .when "/rules/new",
+      templateUrl: "rules/new.html"
+    .otherwise
+      redirectTo: "/rules"
+
+
 @RulesCtrl = [ '$scope', 'Rule', ($scope, Rule) ->
   $scope.rules = Rule.query()
 
