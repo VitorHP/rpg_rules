@@ -1,7 +1,4 @@
-class RulesController < ApplicationController
+class RulesController < InheritedResources::Base
   respond_to :json
 
-  def index
-    respond_with Rule.all
-  end
 end

@@ -27,14 +27,12 @@
         %input{ type: "text", placeholder: "Descrição", ng_model: "newRule.description" }
       %input{ type: "submit", class: "btn", value: "Salvar" }
 
-    %form.form-search
-      %input{ type: "text", class: "input-medium search-query" }
-      %input{ type: "submit", class: "btn" }
+
+    %input{ type: "text", class: "input-medium search-query", ng_model: "query" }
 
     %ul.rules-list
-      %li{ ng_repeat: "rule in rules" }
+      %li{ ng_repeat: "rule in rules | filter:query " }
         %span.rule-name {{rule.name}}
-        %markdown.rule-text= "#tchubas"
+        %p= "tchubas rubas"
 
-    {{rule.description}}
 

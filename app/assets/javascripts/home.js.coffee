@@ -9,6 +9,7 @@ App.directive 'markdown', ->
   return {
     restrict: 'E',
     link: (scope, element, attrs) ->
+      debugger
       htmlText = converter.makeHtml(element.text())
       element.html(htmlText)
   }
