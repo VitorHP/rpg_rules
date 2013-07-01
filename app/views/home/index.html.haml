@@ -1,25 +1,15 @@
 
-%section#systems-section
-  %form.form-horizontal
+%section#systems-section{ ng_controller: "SystemsCtrl" }
+  %form.form-horizontal{ ng_submit: "addSystem()" }
     %input{ type: "text", placeholder: "Novo Sistema", ng_model: "newSystem.name", required: "" }
     %input{ type: "submit", class: "btn", value: "Add" }
 
   %ul.systems-list
-    %li.system
-      %span.system-title= "3D&T"
+    %li.system{ ng_repeat: "system in systems" }
+      %span.system-name {{system.name}}
       %ul.books-list
-        %li.book= "Manual 3D&T Alpha"
-    %li.system
-      %span.system-title= "D&D"
-      %ul.books-list
-        %li.book= "Livro do Jogador"
-    %li.system
-      %span.system-title= "Storytelling"
-      %ul.books-list
-        %li.book= "Mago O Despertar"
+        %li.book{ ng_repeat: "book in system.books" }
+          = link_to "{{book.name}}", "#/books/{{book.id}}/rules"
 
-%section#rules-section
-  = link_to "Regras", "#/rules"
-  |
-  = link_to "Nova Regra", "#/rules/new"
+%section#rules-section{ ng_controller: "RulesCtrl" }
   .view{ ng_view: "" }

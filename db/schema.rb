@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20130620020608) do
 
   create_table "books", :force => true do |t|
     t.string   "name"
-    t.string   "system_id"
+    t.integer  "system_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20130620020608) do
     t.integer  "book_id"
     t.string   "name"
     t.text     "description"
-    t.integer  "book_page"
+    t.integer  "page"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

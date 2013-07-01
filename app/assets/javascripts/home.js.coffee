@@ -4,32 +4,49 @@ App.factory 'Rule', ['$resource', ($resource) ->
   $resource '/rules/:id ', {id: '@id'}
 ]
 
+App.factory 'System', ['$resource', ($resource) ->
+  $resource '/systems/:id ', {id: '@id'}
+]
+
 App.directive 'markdown', ->
   converter = new Showdown.converter()
   return {
     restrict: 'E',
     link: (scope, element, attrs) ->
-      debugger
       htmlText = converter.makeHtml(element.text())
       element.html(htmlText)
   }
 
 App.config ( $routeProvider) ->
   $routeProvider
-    .when "/rules",
+    .when "/books/:bookId/rules",
       templateUrl: "rules.html"
-    .when "/rules/new",
+      controller: "RulesCtrl"
+    .when "/books/:bookId/rules/new",
       templateUrl: "rules/new.html"
+      controller: "RulesCtrl"
     .otherwise
       redirectTo: "/rules"
 
 
-@RulesCtrl = [ '$scope', 'Rule', ($scope, Rule) ->
+@RulesCtrl = [ '$scope', 'Rule', '$routeParams', ($scope, Rule, $routeParams) ->
+  $scope.bookId = $routeParams.bookId
   $scope.rules = Rule.query()
 
   $scope.addRule = ->
+    $scope.newRule.book_id = $scope.bookId
+
     rule = Rule.save($scope.newRule)
     $scope.rules.push $scope.newRule
     $scope.newRule = {}
 
+]
+
+@SystemsCtrl = [ '$scope', 'System', ($scope, System) ->
+  $scope.systems = System.query()
+
+  $scope.addSystem = ->
+    rule = System.save($scope.newSystem)
+    $scope.systems.push $scope.newSystem
+    $scope.newSystem = {}
 ]

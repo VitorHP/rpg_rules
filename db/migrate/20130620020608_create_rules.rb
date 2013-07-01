@@ -4,7 +4,7 @@ class CreateRules < ActiveRecord::Migration
       t.integer :book_id
       t.string :name
       t.text :description
-      t.integer :book_page
+      t.integer :page
 
       t.timestamps
     end

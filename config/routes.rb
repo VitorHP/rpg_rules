@@ -5,4 +5,5 @@ RpgRules::Application.routes.draw do
   devise_for :users
 
   resources :rules
+  resources :systems
 end
