@@ -31,7 +31,7 @@ App.config ( $routeProvider) ->
 
 
 @RulesCtrl = [ '$scope', 'Rule', '$routeParams', ($scope, Rule, $routeParams) ->
-  $scope.bookId = $routeParams.bookId
+  $scope.bookId = $routeParams.book_id
   $scope.rules = Rule.query($routeParams)
 
   $scope.addRule = ->
