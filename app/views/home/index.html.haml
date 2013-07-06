@@ -6,10 +6,10 @@
 
   %ul.systems-list
     %li.system{ ng_repeat: "system in systems" }
-      %span.system-name {{system.name}}
+      = link_to "{{system.name}}", "#/rules?system_id={{system.id}}", class: 'system-name'
       %ul.books-list
         %li.book{ ng_repeat: "book in system.books" }
-          = link_to "{{book.name}}", "#/books/{{book.id}}/rules"
+          = link_to "{{book.name}}", "#/rules?book_id={{book.id}}"
 
 %section#rules-section{ ng_controller: "RulesCtrl" }
   .view{ ng_view: "" }

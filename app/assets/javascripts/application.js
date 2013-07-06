@@ -14,6 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require showdown
-//= require angular
-//= require angular-resource
+//= require unstable/angular
+//= require unstable/angular-resource
 //= require_tree .

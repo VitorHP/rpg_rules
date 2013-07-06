@@ -1,11 +1,11 @@
 window.App = angular.module('RpgRules', ['ngResource'])
 
 App.factory 'Rule', ['$resource', ($resource) ->
-  $resource '/rules/:id ', {id: '@id'}
+  $resource '/rules/:id.json', {id: '@id'}
 ]
 
 App.factory 'System', ['$resource', ($resource) ->
-  $resource '/systems/:id ', {id: '@id'}
+  $resource "/systems/:id.json", {id: '@id'}
 ]
 
 App.directive 'markdown', ->
@@ -19,10 +19,11 @@ App.directive 'markdown', ->
 
 App.config ( $routeProvider) ->
   $routeProvider
-    .when "/books/:bookId/rules",
-      templateUrl: "rules.html"
+    .when "/rules",
+      templateUrl: (params) ->
+        "rules.html"
       controller: "RulesCtrl"
-    .when "/books/:bookId/rules/new",
+    .when "/rules/new",
       templateUrl: "rules/new.html"
       controller: "RulesCtrl"
     .otherwise
@@ -31,7 +32,7 @@ App.config ( $routeProvider) ->
 
 @RulesCtrl = [ '$scope', 'Rule', '$routeParams', ($scope, Rule, $routeParams) ->
   $scope.bookId = $routeParams.bookId
-  $scope.rules = Rule.query()
+  $scope.rules = Rule.query($routeParams)
 
   $scope.addRule = ->
     $scope.newRule.book_id = $scope.bookId
