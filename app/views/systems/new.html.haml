@@ -1,0 +1,7 @@
+%h1 Novo Sistema
+
+%form{ ng_submit: "addSystem()" }
+  .controls
+    %input{ type: "text", ng_model: "newSystem.name", placeholder: "Nome" }
+  .controls
+    %input{ type: "submit", class: "btn", value: "Salvar" }

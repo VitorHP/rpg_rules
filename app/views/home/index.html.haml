@@ -1,12 +1,9 @@
 
 %section#systems-section{ ng_controller: "SystemsCtrl" }
-  %form.form-horizontal{ ng_submit: "addSystem()" }
-    %input{ type: "text", placeholder: "Novo Sistema", ng_model: "newSystem.name", required: "" }
-    %input{ type: "submit", class: "btn", value: "Add" }
-
+  = link_to "Novo Sistema", "#/systems/new"
   %ul.systems-list
     %li.system{ ng_repeat: "system in systems" }
-      = link_to "{{system.name}}", "#/rules?system_id={{system.id}}", class: 'system-name'
+      = link_to "{{system.name}}", "#/systems/{{system.id}}", class: 'system-name'
       %ul.books-list
         %li.book{ ng_repeat: "book in system.books" }
           = link_to "{{book.name}}", "#/rules?book_id={{book.id}}"

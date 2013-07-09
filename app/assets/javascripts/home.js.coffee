@@ -28,6 +28,13 @@ App.config ( $routeProvider) ->
     .when "/rules/new",
       templateUrl: "rules/new.html"
       controller: "RulesCtrl"
+    .when "/systems/new",
+      templateUrl: "systems/new.html"
+      controller: "SystemsCtrl"
+    .when "/systems/:id",
+      templateUrl: (params) -> 
+        "/systems/" + params.id + ".html"
+      controller: 'ShowSystemsCtrl'
     .otherwise
       redirectTo: "/rules"
 
@@ -49,7 +56,11 @@ App.config ( $routeProvider) ->
   $scope.systems = System.query()
 
   $scope.addSystem = ->
-    rule = System.save($scope.newSystem)
-    $scope.systems.push $scope.newSystem
+    system = System.save($scope.newSystem)
+    $scope.systems.push system
     $scope.newSystem = {}
+]
+
+@ShowSystemsCtrl = [ '$scope', 'System', '$routeParams', ($scope, System, $routeParams) ->
+  $scope.system = System.get({ id: $routeParams.id })
 ]
