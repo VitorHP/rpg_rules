@@ -4,7 +4,7 @@
   .control-group
     %input{ type: "text", placeholder: "Nova Regra", ng_model: "newRule.name" }
   .control-group
-    %input{ type: "text", placeholder: "Descrição", ng_model: "newRule.description" }
+    %textarea{ placeholder: "Descrição", ng_model: "newRule.description" }
   .control-group
     %input.input-small{ type: "text", placeholder: "Página", ng_model: "newRule.page" }
   %input{ type: "submit", class: "btn", value: "Salvar" }
