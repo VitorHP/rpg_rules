@@ -1,1 +1,8 @@
-%h1 {{system.name}}
+.system
+  %h1 {{system.name}}
+
+  %legend Livros
+
+  %ul.books
+    %li{ ng_repeat: "book in system.books" }
+      {{book.name}}

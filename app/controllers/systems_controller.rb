@@ -10,7 +10,7 @@ class SystemsController < InheritedResources::Base
 
   def show
     super do |format|
-      format.json { render json: @system.to_json( include: :books ) }
+      format.json { render json: @system.to_json( include: [ :books, :rules ] ) }
     end
   end
 

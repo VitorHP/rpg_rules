@@ -1,6 +1,6 @@
 
-%section#systems-section{ ng_controller: "SystemsCtrl" }
-  = link_to "Novo Sistema", "#/systems/new"
+.sidebar{ ng_controller: "SystemsCtrl" }
+  -#= link_to "Novo Sistema", "#/systems/new"
   %ul.systems-list
     %li.system{ ng_repeat: "system in systems" }
       = link_to "{{system.name}}", "#/systems/{{system.id}}", class: 'system-name'
@@ -8,4 +8,4 @@
         %li.book{ ng_repeat: "book in system.books" }
           = link_to "{{book.name}}", "#/rules?book_id={{book.id}}"
 
-.view{ ng_view: "" }
+.main-view{ ng_view: "" }

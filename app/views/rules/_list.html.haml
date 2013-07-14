@@ -1,0 +1,6 @@
+%ul.rules-list
+  %li.rule{ ng_repeat: "rule in #{rules} | filter:query" }
+    %h2.rule-name {{rule.name}}
+    = " - "
+    %span.rule-book-name {{rule.book.name}}, {{rule.page}}
+    %markdown{ data_md: "rule.description" }
