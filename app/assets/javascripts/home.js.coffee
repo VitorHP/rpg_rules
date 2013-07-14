@@ -19,6 +19,15 @@ App.directive 'markdown', ->
         element.html(htmlText)
   }
 
+App.service 'SystemService', [ '$rootScope', 'System', ($rootScope, System) ->
+  systems: ->
+    System.query()
+  addSystem: (system) ->
+    system = System.save(system)
+    #this.systems().push system
+    $rootScope.$broadcast('SystemService.update', this.systems())
+]
+
 App.config ( $routeProvider) ->
   $routeProvider
     .when "/rules",
@@ -52,13 +61,15 @@ App.config ( $routeProvider) ->
 
 ]
 
-@SystemsCtrl = [ '$scope', 'System', ($scope, System) ->
-  $scope.systems = System.query()
+@SystemsCtrl = [ '$scope', 'SystemService', 'System', ($scope, SystemService, System) ->
+  $scope.systems = SystemService.systems()
 
   $scope.addSystem = ->
-    system = System.save($scope.newSystem)
-    $scope.systems.push system
+    system = SystemService.addSystem($scope.newSystem)
     $scope.newSystem = {}
+
+  $scope.$on  'SystemService.update', ( event, systems ) ->
+    $scope.systems = systems
 ]
 
 @ShowSystemsCtrl = [ '$scope', 'System', '$routeParams', ($scope, System, $routeParams) ->

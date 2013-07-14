@@ -13,4 +13,5 @@ class SystemsController < InheritedResources::Base
       format.json { render json: @system.to_json( include: :books ) }
     end
   end
+
 end

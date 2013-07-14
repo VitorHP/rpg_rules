@@ -1,11 +1,12 @@
-%h1 Nova Regra
+%section#rules-section{ ng_controller: "RulesCtrl" }
+  %h1 Nova Regra
 
-%form.form-horizontal{ ng_submit: "addRule()" }
-  %input{ type: "text", ng_model: "newSystem.bookId", value: "{{bookId}}", class: "hide" }
-  .control-group
-    %input.name{ type: "text", placeholder: "Nome", ng_model: "newRule.name" }
-  .control-group
-    %textarea.description{ placeholder: "Descrição", rows: 15, ng_model: "newRule.description" }
-  .control-group
-    %input.input-small{ type: "text", placeholder: "Página", ng_model: "newRule.page" }
-  %input{ type: "submit", class: "btn", value: "Salvar" }
+  %form.form-horizontal{ ng_submit: "addRule()" }
+    %input{ type: "text", ng_model: "newSystem.bookId", value: "{{bookId}}", class: "hide" }
+    .control-group
+      %input.name{ type: "text", placeholder: "Nome", ng_model: "newRule.name" }
+    .control-group
+      %textarea.description{ placeholder: "Descrição", rows: 15, ng_model: "newRule.description" }
+    .control-group
+      %input.input-small{ type: "text", placeholder: "Página", ng_model: "newRule.page" }
+    %input{ type: "submit", class: "btn", value: "Salvar" }

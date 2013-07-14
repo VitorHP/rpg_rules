@@ -1,7 +1,8 @@
-= render 'rules/links'
-%input{ type: "text", class: "input-medium search-query", ng_model: "query" }
+%section#rules-section{ ng_controller: "RulesCtrl" }
+  = render 'rules/links'
+  %input{ type: "text", class: "input-medium search-query", ng_model: "query" }
 
-%ul.rules-list
-  %li{ ng_repeat: "rule in rules | filter:query" }
-    %span.rule-name {{rule.name}}
-    %markdown{ data_md: "rule.description" }
+  %ul.rules-list
+    %li.rule{ ng_repeat: "rule in rules | filter:query" }
+      %span.rule-name {{rule.name}}
+      %markdown{ data_md: "rule.description" }

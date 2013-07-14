@@ -8,5 +8,4 @@
         %li.book{ ng_repeat: "book in system.books" }
           = link_to "{{book.name}}", "#/rules?book_id={{book.id}}"
 
-%section#rules-section{ ng_controller: "RulesCtrl" }
-  .view{ ng_view: "" }
+.view{ ng_view: "" }
